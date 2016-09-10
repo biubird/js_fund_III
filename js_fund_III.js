@@ -31,29 +31,37 @@ function personConstructor(name){
     }
   }
   var heather = personConstructor("Heather");
+  heather.say_name();
+  heather.say_something();
   heather.walk().run().crawl();
+  console.log(`${person.name} is coding!`);
 
   // Now create a ninjaConstructor that can be used to create Ninjas that each have a name, cohort, and belt-level. Give all of the Ninjas a “levelUp” method that increases their belt-level (Have all ninjas start at a yellow-belt).
 
-  function ninjaConstructor(name){
-    return ninja = {
+  function ninjaConstructor(name, cohort){
+    var belts = ['yellow', 'red', 'green', 'blue', 'white',];
+    var ninja = {
       name: name,
-      cohort: 'MEAN 2016',//this stays the same for each ninja
-      belt: 'yellow-belt'
-    },
-    levelUp: function(){
-//      red: function(){}
-  //    black: function(){}
-      var red_belt = red_belt,
-      var black_belt = black_belt,
-      ninja.belt += ninja.red_belt;
-      console.log(`${ninja.name} is now at the ${ninja.belt} level!`);
-      return ninja;
-    }
+      cohort: cohort,
+      beltLevel: belts[0],
+
+      levelUp: function(){
+        if (ninja.beltLevel !== belts[belts.length - 1]){
+          for (var i = 0; i < belts.length; i += 1){
+            if (belts[i] === ninja.beltLevel){
+              ninja.beltLevel = belts[i + 1];
+              return;
+            }
+          }
+        }
+      }
+    };
+    return ninja;
   }
-  var heather = ninjaConstructor("heather");
-  heather.levelUp();
-  //so this doesn't run as I get an error message for "levelUp" on line 44...
-//I thought that maybe "levelUp" was an actual function or call in javascript but I cannot find that in documentation...
-// Also, not sure how do I differentiate different levels of belts and select them? Do I need a new function for each belt? and is this something I could nest inside the "LevelUp" function?
-}
+  ninjaHeather = ninjaConstructor('heather', 'mean')
+  console.log(ninjaHeather);
+  ninjaHeather.levelUp();
+  ninjaHeather.beltLevel;
+  console.log(`${ninjaHeather.name} is now at the ${ninjaHeather.beltLevel} level!`);
+  ninjaHeather.levelUp();
+  console.log(`${ninjaHeather.name} is now at the ${ninjaHeather.beltLevel} level!`);
