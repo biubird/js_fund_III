@@ -1,3 +1,5 @@
+// Heather -- Really nice job on this. You've obviously internalized the tools we've been talking about in the live sessions, and it's great to see you taking advantage of splitting out functions like "move" and iterating through an array in your levelUp method. The only thing I noticed is unneccesarily using the ${} characters to surround a string in your say_something() function -- you only need to do that for variables.
+
 function personConstructor(name){
     return person = {
       name: name,
@@ -6,6 +8,7 @@ function personConstructor(name){
         console.log(person.name);//would be alert(person.name)
       },
       say_something: function(){
+        // Why are you wrapping the text 'This is starting to make a little more sense!' inside ${}? Since it's just a string, no need to use those special characters!
         console.log(`${person.name} says: ${'This is starting to make a little more sense!'}`);
       },
       walk: function(){
